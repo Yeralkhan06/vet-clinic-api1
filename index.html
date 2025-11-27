@@ -3,57 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <title>Ветеринарная клиника "Здоровый Пёс"</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            margin: 0;
-            padding: 0;
+            font-family: 'Roboto', sans-serif;
             line-height: 1.6;
+            background-color: #f5f8fa;
         }
 
         header {
-            background-color: #4CAF50;
+            background: url('https://images.unsplash.com/photo-1558788353-f76d92427f16?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
             color: white;
-            padding: 20px 0;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             text-align: center;
+            position: relative;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        header h1 {
+            font-size: 3em;
+            position: relative;
+            z-index: 1;
+        }
+
+        header p {
+            font-size: 1.2em;
+            margin-top: 10px;
+            position: relative;
+            z-index: 1;
         }
 
         nav {
-            background-color: #333;
+            background-color: #4CAF50;
+            display: flex;
+            justify-content: center;
         }
 
         nav a {
             color: white;
-            padding: 14px 20px;
-            display: inline-block;
+            padding: 15px 25px;
             text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
         }
 
         nav a:hover {
-            background-color: #575757;
+            background-color: #45a049;
         }
 
         .container {
-            padding: 20px;
-            max-width: 900px;
+            max-width: 1000px;
             margin: auto;
+            padding: 40px 20px;
         }
 
-        h2 {
+        section {
+            margin-bottom: 60px;
+        }
+
+        section h2 {
             color: #4CAF50;
+            margin-bottom: 20px;
+            font-size: 2em;
         }
 
-        ul {
-            list-style-type: none;
-            padding: 0;
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
         }
 
-        li {
-            background: #e0f2e9;
-            margin: 5px 0;
-            padding: 10px;
+        .service-card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 25px;
+            background-color: #4CAF50;
+            color: white;
             border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
         }
 
         footer {
@@ -61,7 +126,11 @@
             padding: 20px;
             background-color: #333;
             color: white;
-            margin-top: 20px;
+        }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 2em; }
+            header p { font-size: 1em; }
         }
     </style>
 </head>
@@ -69,37 +138,59 @@
 
 <header>
     <h1>Ветеринарная клиника "Здоровый Пёс"</h1>
+    <p>Забота о здоровье ваших любимцев — наша миссия</p>
 </header>
 
 <nav>
     <a href="#about">О клинике</a>
     <a href="#services">Услуги</a>
-    <a href="#contacts">Контакты</a>
+    <a href="#contact">Контакты</a>
 </nav>
 
 <div class="container">
     <section id="about">
         <h2>О клинике</h2>
         <p>Наша ветеринарная клиника оказывает полный спектр услуг для домашних животных. 
-        Мы заботимся о здоровье ваших любимцев с любовью и профессионализмом.</p>
+        Мы заботимся о здоровье ваших питомцев с любовью и профессионализмом. 
+        Используем современное оборудование и качественные лекарства.</p>
     </section>
 
     <section id="services">
-        <h2>Услуги</h2>
-        <ul>
-            <li>Консультация ветеринара</li>
-            <li>Вакцинация животных</li>
-            <li>Хирургические операции</li>
-            <li>Груминг и стрижка</li>
-            <li>Диагностика и анализы</li>
-        </ul>
+        <h2>Наши услуги</h2>
+        <div class="services">
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1601758123927-efc69c4326fa?auto=format&fit=crop&w=200&q=80" alt="Консультация">
+                <h3>Консультация ветеринара</h3>
+                <p>Профессиональная консультация по здоровью вашего питомца.</p>
+                <a href="#contact" class="btn">Записаться</a>
+            </div>
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1583337130417-8fc176b1f777?auto=format&fit=crop&w=200&q=80" alt="Вакцинация">
+                <h3>Вакцинация</h3>
+                <p>Проводим плановые прививки и профилактику заболеваний.</p>
+                <a href="#contact" class="btn">Записаться</a>
+            </div>
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1583337130417-8fc176b1f777?auto=format&fit=crop&w=200&q=80" alt="Хирургия">
+                <h3>Хирургия</h3>
+                <p>Проведение операций любой сложности с использованием современного оборудования.</p>
+                <a href="#contact" class="btn">Записаться</a>
+            </div>
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1561948955-570be7e92c1f?auto=format&fit=crop&w=200&q=80" alt="Груминг">
+                <h3>Груминг и стрижка</h3>
+                <p>Профессиональный уход за шерстью, стрижка и купание.</p>
+                <a href="#contact" class="btn">Записаться</a>
+            </div>
+        </div>
     </section>
 
-    <section id="contacts">
+    <section id="contact">
         <h2>Контакты</h2>
         <p>Адрес: г. Алматы, ул. Лесная, 12</p>
         <p>Телефон: +7 (777) 123-45-67</p>
         <p>Email: info@zdorovyipes.kz</p>
+        <a href="tel:+77771234567" class="btn">Позвонить нам</a>
     </section>
 </div>
 
@@ -109,3 +200,4 @@
 
 </body>
 </html>
+
